@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kudos – Employee Portal</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <!-- Login -->
+  <main id="login-view" class="login-box" hidden>
+    <div class="card">
+      <h1>Employee Portal</h1>
+      <p class="hint">Sign in to give and see kudos.</p>
+      <div id="login-error" class="banner" role="alert" hidden></div>
+      <form id="login-form" novalidate>
+        <label for="email">Email</label>
+        <input id="email" type="email" autocomplete="username" required />
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" required />
+        <p style="margin-top:16px"><button type="submit" id="login-btn">Sign in</button></p>
+      </form>
+      <p class="hint">Demo: <code>aroha@example.com</code> / <code>User123!</code><br />Admin: <code>admin@example.com</code> / <code>Admin123!</code></p>
+    </div>
+  </main>
+
+  <!-- Dashboard -->
+  <div id="dashboard-view" hidden>
+    <header class="header">
+      <h1>🌟 Kudos Dashboard</h1>
+      <nav>
+        <span id="whoami" class="meta"></span>
+        <a id="admin-link" href="/admin.html" hidden>Moderation</a>
+        <button id="logout-btn" class="secondary small" type="button">Log out</button>
+      </nav>
+    </header>
+
+    <main class="container two-col">
+      <section class="card" aria-labelledby="give-title">
+        <h2 id="give-title">Give kudos</h2>
+        <div id="form-error" class="banner" role="alert" hidden></div>
+        <form id="kudos-form" novalidate>
+          <label for="recipient-search">Colleague</label>
+          <input id="recipient-search" type="search" placeholder="Type to filter…" autocomplete="off" aria-label="Filter colleagues" />
+          <select id="recipient" aria-describedby="recipient-error" size="1"></select>
+          <p id="recipient-error" class="field-error" role="alert"></p>
+
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Say thanks for something specific…" aria-describedby="message-error message-counter"></textarea>
+          <div id="message-counter" class="counter">0 / 500</div>
+          <p id="message-error" class="field-error" role="alert"></p>
+
+          <button id="submit-btn" type="submit">Send kudos</button>
+        </form>
+      </section>
+
+      <section class="card" aria-labelledby="feed-title">
+        <h2 id="feed-title">Recent kudos</h2>
+        <div id="feed-error" class="banner" role="alert" hidden></div>
+        <div id="feed" aria-live="polite"></div>
+        <p id="feed-empty" class="empty" hidden>No kudos yet – be the first!</p>
+        <p style="text-align:center"><button id="load-more" class="secondary" type="button" hidden>Load more</button></p>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="report-dialog">
+    <form method="dialog" id="report-form">
+      <h3>Report this kudos</h3>
+      <p class="hint">An admin will review it. Reason is optional.</p>
+      <label for="report-reason">Reason</label>
+      <input id="report-reason" maxlength="255" />
+      <div class="dialog-actions">
+        <button type="button" class="secondary" id="report-cancel">Cancel</button>
+        <button type="submit" id="report-confirm" class="danger">Report</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/common.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
