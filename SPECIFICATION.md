@@ -4,6 +4,7 @@
 **Author:** Graduate Developer / AI Architect, Datacom
 **Status:** Approved for implementation
 **Version:** 1.0
+**GitHub Repository:** https://github.com/rthamizhmaran1-dev/kudos_system
 
 ## 1. Overview
 
